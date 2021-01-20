@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WpfApp1.Models.Users;
+using WpfApp1.Models;
+using WpfApp1.Repository;
 
 namespace WpfApp1
 {
@@ -32,14 +33,16 @@ namespace WpfApp1
                 BtnReg.Content = "Вход";
                 LabelTitle.Content = "Регистрация";
                 BtnAuth.Content = "Зарегистрироваться";
+                this.Title = "Регистрация";
             }
             else
             {
                 BtnReg.Content = "Регистрация";
                 LabelTitle.Content = "Вход";
                 BtnAuth.Content = "Войти";
+                this.Title = "Аторизация";
             }
-            
+
         }
 
         private void BtnAuth_Click(object sender, RoutedEventArgs e)

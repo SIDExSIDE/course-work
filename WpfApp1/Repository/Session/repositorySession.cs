@@ -1,14 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using WpfApp1.Models;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 
 namespace WpfApp1.Repository
 {
-    class repositoryDoctors
+
+    class repositorySession
     {
         public static List<Doctors> GetAllDoctors()
         {
@@ -29,9 +27,7 @@ namespace WpfApp1.Repository
             {
                 var data = new Doctors
                     (
-                        Int32.Parse(reader.GetValue(0).ToString()),
-                        reader.GetValue(1).ToString(),
-                        reader.GetValue(2).ToString()
+                        reader.GetValue(1).ToString()
                     );
 
                 result.Add(data);
@@ -42,11 +38,41 @@ namespace WpfApp1.Repository
             return result;
         }
 
-        public static void AddDoctor(Doctors data)
+        public static List<Patients> GetAllPatients()
+        {
+            var result = new List<Patients>();
+
+            var db = new DB();
+
+            string table = "patients";
+            string query = $"SELECT * FROM {table}";
+
+            db.OpenConnection();
+
+            MySqlCommand command = new MySqlCommand(query, db.GetConnection());
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var data = new Patients
+                    (
+                        reader.GetValue(1).ToString()
+                    );
+
+                result.Add(data);
+            }
+
+            db.CloseConnection();
+
+            return result;
+        }
+
+        public static void Add(Session data)
         {
             var db = new DB();
 
-            string query = $"INSERT doctors VALUES (null, '{data.Name}', '{data.Type}')";
+            string query = $"INSERT session VALUES (null, '{data.PatientName}', '{data.DoctorName}', '{data.Time}', '{data.Price}')";
 
             db.OpenConnection();
 
@@ -56,11 +82,11 @@ namespace WpfApp1.Repository
             db.CloseConnection();
         }
 
-        public static void DeleteDoctor(int id)
+        /*public static void Delete(int id)
         {
             var db = new DB();
 
-            string query = $"DELETE FROM doctors WHERE id = {id}";
+            string query = $"DELETE FROM session WHERE id = {id}";
 
             db.OpenConnection();
 
@@ -68,6 +94,6 @@ namespace WpfApp1.Repository
             command.ExecuteNonQuery();
 
             db.CloseConnection();
-        }
+        }*/
     }
 }

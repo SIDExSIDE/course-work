@@ -104,6 +104,15 @@
     <Compile Include="AddSessionWindow.xaml.cs">
       <DependentUpon>AddSessionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DoctorsWindows\DoctorAdd.xaml.cs">
+      <DependentUpon>DoctorAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorsWindows\DoctorDelete.xaml.cs">
+      <DependentUpon>DoctorDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorsWindows\DoctorsListWindow.xaml.cs">
+      <DependentUpon>DoctorsListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -112,11 +121,34 @@
     </Compile>
     <Compile Include="Models\Doctors\Doctors.cs" />
     <Compile Include="Models\Patients\Patients.cs" />
+    <Compile Include="Models\Session\Session.cs" />
     <Compile Include="Models\Users\Users.cs" />
+    <Compile Include="PatientsWindows\PatientAdd.xaml.cs">
+      <DependentUpon>PatientAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientsWindows\PatientDelete.xaml.cs">
+      <DependentUpon>PatientDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientsWindows\PatientsListWindow.xaml.cs">
+      <DependentUpon>PatientsListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Repository\Doctors\repositoryDoctors.cs" />
     <Compile Include="Repository\Patients\repositoryPatients.cs" />
+    <Compile Include="Repository\Session\repositorySession.cs" />
     <Compile Include="Repository\Users\repositoryUsers.cs" />
     <Page Include="AddSessionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorsWindows\DoctorAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorsWindows\DoctorDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DoctorsWindows\DoctorsListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,6 +170,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientsWindows\PatientAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientsWindows\PatientDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientsWindows\PatientsListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

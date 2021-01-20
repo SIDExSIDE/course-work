@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WpfApp1.Models.Users;
+using WpfApp1.Models;
+using WpfApp1.Repository;
 
 namespace WpfApp1
 {
@@ -23,15 +24,57 @@ namespace WpfApp1
         public AddSessionWindow()
         {
             InitializeComponent();
+
+            List<Doctors> doctorsData = repositorySession.GetAllDoctors();
+            var cbListDoctors = new List<string>();
+
+            foreach (var i in doctorsData)
+            {
+                cbListDoctors.Add($"{i.Name}");
+            }
+
+            cbDoctors.ItemsSource = cbListDoctors;
+
+
+            List<Patients> patientsData = repositorySession.GetAllPatients();
+            var cbListPatients = new List<string>();
+
+            foreach (var i in patientsData)
+            {
+                cbListPatients.Add($"{i.Name}");
+            }
+
+            cbPatients.ItemsSource = cbListPatients;
         }
 
-        private void testComboBox_Loaded(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var user = new Users();
+            Window MenuWindow = new MenuWindow();
+            MenuWindow.Show();
+            this.Close();
+        }
 
-            user = repositoryUsers.TEST();
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var data = new Session(
+                    cbPatients.Text,
+                    cbDoctors.Text,
+                    time.Text,
+                    Int32.Parse(price.Text)
+                );
 
-            testComboBox.Items.Add(user.login);
+            try
+            {
+                repositorySession.Add(data);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show($"Отсутствует подключение к базе данных. \n Сообщение ошибки: ${error.Message}");
+                this.Close();
+                return;
+            }
+
+            MessageBox.Show("Запись успешно добавлена.");
         }
     }
 }

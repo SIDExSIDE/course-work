@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1.Models.Users;
+using WpfApp1.Models;
 
 namespace WpfApp1
 {
@@ -31,32 +31,6 @@ namespace WpfApp1
             Window LoginWindow = new LoginWindow();
             LoginWindow.Show();
             this.Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Window MenuWindow = new MenuWindow();
-            MenuWindow.Show();
-            this.Close();
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            string log = login.Text;
-            string pass = password.Text;
-
-            var data = new Users();
-            data.login = log;
-            data.password = pass;
-            repositoryUsers.AddUser(data);
-        }
-
-        private void DataGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            string log = login.Text;
-            var user = new Users();
-            //user = repositoryUsers.GetById();
-            //MessageBox.Show(user.login);
         }
     }
 }

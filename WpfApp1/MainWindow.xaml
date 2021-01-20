@@ -5,25 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Поликлиника" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Click="Button_Click" Grid.Row="0">LoginWindow</Button>
-        <Button Grid.Row="2" Click="Button_Click_1">MenuWindow</Button>
+        <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="32">Добро пожаловать!</Label>
+        <Button Click="Button_Click" Grid.Row="3" Grid.Column="1" FontSize="20">Вход / регистрация</Button>
         
-        <Button Grid.Row="7" Click="Button_Click_2">ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ (ТЕСТ)</Button>
-        <TextBox Grid.Row="5" x:Name="login"></TextBox>
-        <TextBox Grid.Row="6" x:Name="password"></TextBox>
-        <DataGrid Grid.Row="8" Loaded="DataGrid_Loaded" x:Name="Table"></DataGrid>
     </Grid>
 </Window>

@@ -11,40 +11,44 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WpfApp1.DoctorsWindows;
-using WpfApp1.PatientsWindows;
+using WpfApp1.Models;
+using WpfApp1.Repository;
 
-namespace WpfApp1
+namespace WpfApp1.DoctorsWindows
 {
     /// <summary>
-    /// Логика взаимодействия для MenuWindow.xaml
+    /// Логика взаимодействия для DoctorsListWindow.xaml
     /// </summary>
-    public partial class MenuWindow : Window
+    public partial class DoctorsListWindow : Window
     {
-        public MenuWindow()
+        private void UpdateTable()
+        {
+            List<Doctors> listDoctors = repositoryDoctors.GetAllDoctors();
+            dgDoctors.ItemsSource = listDoctors;
+        }
+        public DoctorsListWindow()
         {
             InitializeComponent();
+            UpdateTable();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Window AddSessionWindow = new AddSessionWindow();
-            AddSessionWindow.Show();
+            Window MenuWindow = new MenuWindow();
+            MenuWindow.Show();
             this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Window DoctorsListWindow = new DoctorsListWindow();
-            DoctorsListWindow.Show();
-            this.Close();
+            new DoctorAdd().ShowDialog();
+            UpdateTable();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Window PatientsListWindow = new PatientsListWindow();
-            PatientsListWindow.Show();
-            this.Close();
+            new DoctorDelete().ShowDialog();
+            UpdateTable();
         }
     }
 }
